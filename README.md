@@ -1,16 +1,22 @@
 # Processo de Modelagem Dimensional – Star Schema para Análise de Professores
 
-Este repositório contém a solução do desafio de construção de um **Star Schema (Esquema em Estrela)** com foco no objeto de análise **Professor**[cite: 5], desenvolvido para o bootcamp da DIO.
+Este repositório contém a solução do desafio de construção de um **Star Schema (Esquema em Estrela)** com foco no objeto de análise **Professor**, desenvolvido para o bootcamp de Power BI da DIO.
 
-## 📌 Objetivo do Desafio
-Transformar um diagrama relacional de uma universidade em um modelo dimensional otimizado[cite: 5]. O foco principal da análise são os **Professores**, seus cursos ministrados, departamentos e datas de oferta de disciplinas[cite: 5]. Conforme instruído, os dados referentes a alunos foram desconsiderados na modelagem[cite: 5].
+## 📐 Diagrama do Modelo Star Schema
+
+![Diagrama Star Schema](imagens/Diagrama_Star_Schema.png)
 
 ---
 
-## 📐 Estrutura do Modelo Dimensional (Star Schema)
+## 📌 Objetivo do Desafio
+Transformar um diagrama relacional de uma universidade em um modelo dimensional otimizado. O foco principal da análise são os **Professores**, seus cursos ministrados, departamentos e datas de oferta de disciplinas. Conforme orientado no desafio, os dados referentes a alunos foram desconsiderados na modelagem.
+
+---
+
+## 🏗️ Estrutura do Modelo Dimensional
 
 ### **1. Tabela Fato (`Fato_Professor`)**
-Contém as métricas de ensino, carga horária e os eventos de lecionação do professor[cite: 5]:
+Contém as métricas de ensino, carga horária e os eventos de lecionação do professor:
 * `SK_Fato_Professor` (Surrogate Key)
 * `idProfessor` (FK - Dim_Professor)
 * `idDepartamento` (FK - Dim_Departamento)
@@ -48,7 +54,7 @@ Contém as métricas de ensino, carga horária e os eventos de lecionação do p
   * `Nome_Curso`
   * `Tipo_Graduacao`
 
-* **`Dim_Data` (Dimensão de Datas Criada)**[cite: 5]
+* **`Dim_Data` (Dimensão de Datas Criada)**
   * `idData` (PK)
   * `Data_Oferta`
   * `Ano`
@@ -60,15 +66,23 @@ Contém as métricas de ensino, carga horária e os eventos de lecionação do p
 ---
 
 ## 🛠️ Etapas do Projeto
-1. **Análise do Diagrama Relacional:** Identificação das entidades relacionadas ao Professor (Departamento, Disciplina, Curso)[cite: 5].
-2. **Exclusão do Escopo de Alunos:** Remoção das tabelas `Aluno` e `Matriculado`[cite: 5].
-3. **Criação da Dimensão Data:** Adição de campos temporais de oferta de disciplinas e cursos para habilitar Time Intelligence no Power BI[cite: 5].
-4. **Definição de Granularidade e Chaves:** Mapeamento de Primary Keys (PK), Foreign Keys (FK) e criação da Surrogate Key na tabela Fato[cite: 5].
-5. **Configuração de Relacionamentos:** Estabelecimento de conexões `1:N` da Fato para as Dimensões (Star Schema)[cite: 5].
+1. **Análise do Diagrama Relacional:** Identificação das entidades relacionadas ao Professor (Departamento, Disciplina, Curso).
+2. **Exclusão do Escopo de Alunos:** Remoção das tabelas `Aluno` e `Matriculado` para otimização do modelo relacional em estrela.
+3. **Criação da Dimensão Data:** Adição de campos temporais de oferta de disciplinas e cursos para habilitar inteligência de tempo no Power BI.
+4. **Definição de Granularidade e Chaves:** Mapeamento de Primary Keys (PK), Foreign Keys (FK) e criação da Surrogate Key na tabela Fato.
+5. **Configuração de Relacionamentos:** Estabelecimento de conexões `1:N` (Um para Muitos) da Fato para as Dimensões no ambiente de modelagem do Power BI.
 
 ---
 
-## 📂 Arquivos no Repositório
-* `Modelagem_StarSchema_Universidade.pbix`: Modelo dimensional no Power BI Desktop.
-* `Diagrama_Star_Schema.png`: Imagem do diagrama em estrela resultante.
-* `README.md`: Documentação completa.
+## 📂 Organização do Repositório
+
+```text
+desafio-star-schema-universidade-powerbi/
+│
+├── 📁 pbix/
+│   └── Modelagem_StarSchema_Universidade.pbix
+│
+├── 📁 imagens/
+│   └── Diagrama_Star_Schema.png
+│
+└── README.md
